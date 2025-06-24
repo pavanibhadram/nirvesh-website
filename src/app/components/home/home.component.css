@@ -1,0 +1,13 @@
+.our-services-bg-left {
+  background-image: url("/assets/background-image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.our-services-bg-right {
+  background-image: url("/assets/background-image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
