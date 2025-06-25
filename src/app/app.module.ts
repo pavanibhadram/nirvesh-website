@@ -21,8 +21,6 @@ import { LoginComponent } from './components/login/login.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-
-    TheScienceComponent,
     PortfolioComponent,
     OurTeamComponent,
     CareersComponent,

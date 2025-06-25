@@ -1,30 +1,32 @@
-<div class="container mx-auto px-4 bg-gray-50 w-[95%] h-20 rounded-3xl flex items-center justify-between mt-2">
-    <!-- Logo -->
+<div
+    class="container mx-auto px-4 bg-gray-50 w-[95%] h-20 rounded-3xl flex items-center justify-between mt-2 relative z-50">
     <div class="flex items-center space-x-2">
         <img src="assets/n-w-logo.png" alt="logo" class="h-14 object-contain" />
-
     </div>
-    <!-- Menu -->
-    <div class="flex items-center space-x-8">
+
+    <div class="hidden md:flex items-center space-x-8">
         <ng-container *ngFor="let item of menuItems; let i = index">
-            <!-- Dropdown for items with children -->
             <div class="relative" *ngIf="item.children; else normalLink" (mouseenter)="openDropdownIndex = i"
                 (mouseleave)="openDropdownIndex = null">
                 <button class="flex items-center text-[#3b3b6d] font-semibold hover:text-blue-500 focus:outline-none">
                     {{ item.label }}
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-200"
+                        [class.rotate-180]="openDropdownIndex === i" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10"
-                    *ngIf="openDropdownIndex === i">
+                <div class="absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10 origin-top-right transform transition-all duration-200 ease-out"
+                    [class.scale-y-100]="openDropdownIndex === i" [class.scale-y-0]="openDropdownIndex !== i"
+                    [class.opacity-100]="openDropdownIndex === i" [class.opacity-0]="openDropdownIndex !== i"
+                    [class.pointer-events-auto]="openDropdownIndex === i"
+                    [class.pointer-events-none]="openDropdownIndex !== i">
                     <a *ngFor="let child of item.children" [routerLink]="child.link"
-                        class="block px-4 py-2 text-gray-700 hover:bg-blue-100">
+                        class="block px-4 py-2 text-gray-700 hover:bg-blue-100 rounded-md">
                         {{ child.label }}
                     </a>
                 </div>
             </div>
-            <!-- Normal link for items without children -->
             <ng-template #normalLink>
                 <a [routerLink]="item.link" class="text-[#3b3b6d] font-semibold hover:text-blue-500">
                     {{ item.label }}
@@ -32,4 +34,55 @@
             </ng-template>
         </ng-container>
     </div>
+
+    <div class="md:hidden">
+        <button (click)="toggleMobileMenu()" class="text-[#3b3b6d] focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path [attr.d]="isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" />
+            </svg>
+        </button>
+    </div>
+
+    <div [class.translate-x-0]="isMobileMenuOpen" [class.-translate-x-full]="!isMobileMenuOpen"
+        class="fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out md:hidden">
+        <div class="flex justify-end p-4">
+            <button (click)="toggleMobileMenu()" class="text-[#3b3b6d] focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <nav class="flex flex-col items-center py-8 space-y-6">
+            <ng-container *ngFor="let item of menuItems; let i = index">
+                <div *ngIf="item.children; else mobileNormalLink" class="relative w-full text-center">
+                    <button (click)="toggleMobileDropdown(i)"
+                        class="flex items-center justify-center w-full text-[#3b3b6d] font-semibold text-lg hover:text-blue-500 focus:outline-none py-2">
+                        {{ item.label }}
+                        <svg class="w-5 h-5 ml-2 transform transition-transform duration-200"
+                            [class.rotate-180]="openMobileDropdownIndex === i" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div *ngIf="openMobileDropdownIndex === i" class="flex flex-col bg-gray-100 mt-2 py-2 w-full">
+                        <a *ngFor="let child of item.children" [routerLink]="child.link" (click)="toggleMobileMenu()"
+                            class="block px-4 py-2 text-gray-700 hover:bg-blue-200 text-base">
+                            {{ child.label }}
+                        </a>
+                    </div>
+                </div>
+                <ng-template #mobileNormalLink>
+                    <a [routerLink]="item.link" (click)="toggleMobileMenu()"
+                        class="text-[#3b3b6d] font-semibold text-lg hover:text-blue-500 py-2">
+                        {{ item.label }}
+                    </a>
+                </ng-template>
+            </ng-container>
+        </nav>
+    </div>
+</div>
+
+<div *ngIf="isMobileMenuOpen" (click)="toggleMobileMenu()"
+    class="fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300 ease-in-out md:hidden">
 </div>
