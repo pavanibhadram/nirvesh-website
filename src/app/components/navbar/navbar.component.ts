@@ -25,7 +25,7 @@ export class NavbarComponent {
     { label: 'The Science', link: '/the-science' },
     { label: 'Portfolio', link: '/portfolio' },
     { label: 'Our Team', link: '/our-team' },
-    { label: 'careers', link: '/careers' },
+    { label: 'Careers', link: '/careers' },
     { label: 'Contact Us', link: '/contact-us' },
     { label: 'Login', link: '/login' },
   ];

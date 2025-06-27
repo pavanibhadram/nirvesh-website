@@ -1,1 +1,149 @@
-<p>careers works!</p>
+<section class="bg-[#003366] m-4 md:m-10 rounded-2xl relative overflow-hidden py-10 md:py-20">
+    <div class="container mx-auto px-4 relative z-10 py-8 md:py-12">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-center">Careers</h1>
+    </div>
+    <div class="absolute inset-0">
+        <img src="assets/bg-splines.png" alt="" class="w-full h-full object-cover">
+    </div>
+</section>
+
+<!-- Hero Section -->
+<div class="text-center mt-10">
+    <h1 class="text-4xl md:text-5xl font-bold text-[#16205B]">Careers at Nirvesh</h1>
+    <p class="mt-4 text-sm md:text-base text-[#16205B] max-w-2xl mx-auto">
+        Join a pioneering team dedicated to advancing brain health. Work on innovative projects in a supportive, dynamic
+        environment, offering opportunities for professional growth and career advancement. Be part of a start-up that
+        values talent, integrity, and passion in the neurosciences field.
+    </p>
+    <button
+        class="mt-6 px-8 py-2 rounded-full bg-[#16205B] text-white font-semibold shadow hover:bg-[#1a256a] transition"
+        (click)="openApplicationModal()">
+        Send your Application
+    </button>
+</div>
+
+<!-- Why Work With Us -->
+<div class="mt-16 text-center container w-[80%] mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#16205B] mb-8">Why Work With Us</h2>
+    <div class="flex flex-col md:flex-row justify-center gap-6">
+        <!-- Card 1 -->
+        <div class="bg-[#F6F8FB] rounded-xl p-6 flex-1 flex items-center gap-4 shadow-sm">
+            <img src="assets/innovative.png" alt="Innovative Projects" class="w-20">
+            <div class="text-left">
+                <div class="font-bold text-[#16205B] text-xl">Innovative Projects</div>
+                <div class="text-sm text-[#16205B] opacity-70 text-lg">Engage in cutting-edge, neurocognitive
+                    advancements.
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-[#F6F8FB] rounded-xl p-6 flex-1 flex items-center gap-4 shadow-sm">
+            <img src="assets/dynamic.png" alt="Dynamic Workplace" class="w-20">
+            <div class="text-left">
+                <div class="font-bold text-[#16205B] text-xl">Dynamic Workplace</div>
+                <div class="text-sm text-[#16205B] opacity-70 text-lg">Thrive in a supportive, diverse environment.
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-[#F6F8FB] rounded-xl p-6 flex-1 flex items-center gap-4 shadow-sm">
+            <img src="assets/careers.png" alt="Career Growth" class="w-20">
+            <div class="text-left">
+                <div class="font-bold text-[#16205B] text-xl">Career Growth</div>
+                <div class="text-sm text-[#16205B] opacity-70 ">Unlock opportunities for professional
+                    development.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Current Openings -->
+<div class="mt-16 px-2 md:px-0">
+    <div class="bg-[#092B5A] rounded-2xl py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-10">Current Openings</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Job Card (repeat for each opening) -->
+            <div *ngFor="let job of jobs" class="bg-white rounded-xl p-6 flex flex-col gap-2 shadow-sm">
+                <div class="flex justify-between items-center">
+                    <div class="font-bold text-[#16205B] text-lg">Frontend Developer</div>
+                    <button
+                        class="px-4 py-1 rounded-full bg-[#16205B] text-white text-xs font-semibold hover:bg-[#1a256a] transition">Know
+                        more</button>
+                </div>
+                <div class="text-xs text-[#16205B] opacity-70 mb-2">2-3 Years &nbsp;•&nbsp; Hyderabad</div>
+                <div class="text-xs text-[#16205B] opacity-70">
+                    Front-end developers are responsible for the user interface, graphics, and look of websites and web
+                    applications. They work...
+                </div>
+            </div>
+            <!-- Repeat above card for each job -->
+        </div>
+    </div>
+</div>
+
+<!-- Application Modal -->
+<div *ngIf="showApplicationModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+    <div class="bg-white rounded-[40px] w-[90vw] max-w-5xl p-8 md:p-12 relative shadow-lg">
+        <!-- Close Button -->
+        <button class="absolute top-6 right-8 text-2xl font-bold text-black hover:text-gray-600"
+            (click)="closeApplicationModal()" aria-label="Close">
+            &times;
+        </button>
+        <!-- Form Title -->
+        <h2 class="text-2xl font-semibold mb-8">Application Form</h2>
+        <!-- Form -->
+        <form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Name -->
+                <div>
+                    <label class="block text-sm font-medium mb-2">Name of the applicant</label>
+                    <input type="text" placeholder="Type here"
+                        class="w-full rounded-2xl bg-[#F6F8FB] px-6 py-3 text-sm outline-none" />
+                </div>
+                <!-- Phone -->
+                <div>
+                    <label class="block text-sm font-medium mb-2">Phone Number</label>
+                    <input type="text" placeholder="Type here"
+                        class="w-full rounded-2xl bg-[#F6F8FB] px-6 py-3 text-sm outline-none" />
+                </div>
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email ID</label>
+                    <input type="email" placeholder="Type here"
+                        class="w-full rounded-2xl bg-[#F6F8FB] px-6 py-3 text-sm outline-none" />
+                </div>
+                <!-- Message -->
+                <div>
+                    <label class="block text-sm font-medium mb-2">Message</label>
+                    <input type="text" placeholder="Type here"
+                        class="w-full rounded-2xl bg-[#F6F8FB] px-6 py-3 text-sm outline-none" />
+                </div>
+                <!-- File Upload (full width) -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-2">Upload your resume along with motivation
+                        letter</label>
+                    <div class="relative">
+                        <input type="file"
+                            class="w-full rounded-2xl bg-[#F6F8FB] px-6 py-3 text-sm outline-none cursor-pointer file:hidden"
+                            id="resume" />
+                        <span class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
+                            <!-- Upload Icon SVG (replace with your own if needed) -->
+                            <svg width="24" height="24" fill="none" stroke="#16205B" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 17V7M7 12l5-5 5 5" />
+                                <rect x="4" y="17" width="16" height="2" rx="1" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="flex justify-center mt-12">
+                <button type="submit"
+                    class="w-[350px] max-w-full py-3 rounded-full bg-[#092B5A] text-white font-semibold text-base hover:bg-[#1a256a] transition">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
