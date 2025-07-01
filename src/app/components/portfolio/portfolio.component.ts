@@ -19,7 +19,7 @@ export class PortfolioComponent {
       image: 'assets/magnetic.jpg',
       description:
         'These massive machines estimate the oxygenated levels of blow flow inside the brain wherein lack or excess amount can cause complexity.',
-      link: '/fmri',
+      link: '/functional-magnetic',
     },
     {
       title: 'Prevalence',
@@ -33,7 +33,7 @@ export class PortfolioComponent {
       image: 'assets/storke.jpg',
       description:
         'Conditions where the supply of blood is cut off or the blood vessels in the brain burst leading to severe conditions, at times even death.',
-      link: '/stroke-rehab',
+      link: '/stroke-rehabilitation',
     },
     {
       title: 'Epidemiology',

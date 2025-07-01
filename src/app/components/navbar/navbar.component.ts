@@ -16,10 +16,10 @@ export class NavbarComponent {
     {
       label: 'Why us',
       children: [
-        { label: 'Our Vision', link: '/services/web' },
-        { label: 'Values', link: '/services/mobile' },
-        { label: 'Product', link: '/services/ui-ux' },
-        { label: 'Out Look', link: '/services/ui-ux' },
+        { label: 'Our Vision', link: '/why-us/our-vision' },
+        { label: 'Values', link: '/why-us/values' },
+        { label: 'Product', link: '/why-us/product' },
+        { label: 'Out Look', link: '/why-us/out-look' },
       ],
     },
     { label: 'The Science', link: '/the-science' },

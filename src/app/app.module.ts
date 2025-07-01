@@ -15,6 +15,17 @@ import { OurTeamComponent } from './components/our-team/our-team.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
+import { OurVisionComponent } from './components/our-vision/our-vision.component';
+import { ValuesComponent } from './components/values/values.component';
+import { ProductComponent } from './components/product/product.component';
+import { OutLookComponent } from './components/out-look/out-look.component';
+import { WhyUsComponent } from './components/why-us/why-us.component';
+import { IntroductionComponent } from './components/introduction/introduction.component';
+import { FunctionalMagneticComponent } from './components/functional-magnetic/functional-magnetic.component';
+import { PrevalenceComponent } from './components/prevalence/prevalence.component';
+import { StrokeRehabilitationComponent } from './components/stroke-rehabilitation/stroke-rehabilitation.component';
+import { EpidemiologyComponent } from './components/epidemiology/epidemiology.component';
+import { MusicTherapyComponent } from './components/music-therapy/music-therapy.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +37,12 @@ import { LoginComponent } from './components/login/login.component';
     CareersComponent,
     ContactUsComponent,
     LoginComponent,
+    IntroductionComponent,
+    FunctionalMagneticComponent,
+    PrevalenceComponent,
+    StrokeRehabilitationComponent,
+    EpidemiologyComponent,
+    MusicTherapyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],
