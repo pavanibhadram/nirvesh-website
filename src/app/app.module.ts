@@ -26,6 +26,7 @@ import { PrevalenceComponent } from './components/prevalence/prevalence.componen
 import { StrokeRehabilitationComponent } from './components/stroke-rehabilitation/stroke-rehabilitation.component';
 import { EpidemiologyComponent } from './components/epidemiology/epidemiology.component';
 import { MusicTherapyComponent } from './components/music-therapy/music-therapy.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MusicTherapyComponent } from './components/music-therapy/music-therapy.
     StrokeRehabilitationComponent,
     EpidemiologyComponent,
     MusicTherapyComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],

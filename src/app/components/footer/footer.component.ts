@@ -25,6 +25,6 @@ export class FooterComponent {
     { label: 'Newsletter', link: '#' },
     { label: 'Careers', link: '/careers' },
     { label: 'Team of Service', link: '#' },
-    { label: 'Privacy Policy', link: '#' },
+    { label: 'Privacy Policy', link: '/privacy-policy' },
   ];
 }

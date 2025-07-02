@@ -13,6 +13,7 @@ import { PrevalenceComponent } from './components/prevalence/prevalence.componen
 import { StrokeRehabilitationComponent } from './components/stroke-rehabilitation/stroke-rehabilitation.component';
 import { EpidemiologyComponent } from './components/epidemiology/epidemiology.component';
 import { MusicTherapyComponent } from './components/music-therapy/music-therapy.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
   { path: 'stroke-rehabilitation', component: StrokeRehabilitationComponent },
   { path: 'epidemiology', component: EpidemiologyComponent },
   { path: 'music-therapy', component: MusicTherapyComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
   {
     path: 'why-us',
     loadChildren: () =>
