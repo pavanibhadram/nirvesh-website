@@ -7,17 +7,17 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   whyUsLinks = [
-    { label: 'Our Vision', link: '#' },
-    { label: 'Values', link: '#' },
-    { label: 'Products', link: '#' },
-    { label: 'Outlook', link: '#' },
+    { label: 'Our Vision', link: '/why-us/our-vision' },
+    { label: 'Values', link: '/why-us/values' },
+    { label: 'Products', link: '/why-us/product' },
+    { label: 'Outlook', link: '/why-us/out-look' },
   ];
 
   quickLinks = [
     { label: 'Home', link: '/' },
-    { label: 'The Science', link: '/science' },
-    { label: 'Our Team', link: '/team' },
-    { label: 'Contact Us', link: '/contact' },
+    { label: 'The Science', link: '/the-science' },
+    { label: 'Our Team', link: '/our-team' },
+    { label: 'Contact Us', link: '/contact-us' },
     { label: 'Synpasil Login', link: '#' },
   ];
 
