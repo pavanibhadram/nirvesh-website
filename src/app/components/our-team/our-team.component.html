@@ -1,8 +1,38 @@
 <section class="bg-[#003366] m-4 md:m-10 rounded-2xl relative overflow-hidden py-10 md:py-20">
     <div class="container mx-auto px-4 relative z-10 py-8 md:py-12">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-center">Our Team </h1>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-center">Out Team</h1>
     </div>
     <div class="absolute inset-0">
         <img src="assets/bg-splines.png" alt="" class="w-full h-full object-cover">
     </div>
 </section>
+
+
+<div class="container mx-auto max-w-6xl mb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let member of teamMembers" class="relative overflow-hidden rounded-2xl shadow-lg group cursor-pointer
+                       aspect-video md:aspect-square">
+
+            <!-- Image Layer -->
+            <img [src]="member.image" [alt]="member.name"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0" />
+
+            <!-- Bottom Name Bar with Gradient (always visible over image, fades out on hover) -->
+            <div class="absolute bottom-0 left-0 w-full h-24 sm:h-32 z-10 px-4 pb-4
+                           bg-gradient-to-t from-[#092B5A] to-transparent/10
+                           flex items-end justify-center text-center
+                           transition-opacity duration-500 ease-in-out group-hover:opacity-0">
+                <h3 class="text-white text-xl md:text-2xl font-bold">{{ member.name }}</h3>
+            </div>
+
+            <!-- Content Overlay Layer (comes up on hover) -->
+            <div class="absolute inset-0 bg-[#003366] p-6 flex flex-col justify-end items-center text-center
+                           opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0
+                           transition-all duration-500 ease-in-out">
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-2">{{ member.name }}</h3>
+                <!-- <p class="text-white font-semibold text-sm mb-4">{{ member.designation }}</p> -->
+                <p class="text-white text-sm leading-relaxed line-clamp-4">{{ member.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
