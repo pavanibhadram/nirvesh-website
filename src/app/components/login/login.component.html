@@ -1,1 +1,144 @@
-<p>login works!</p>
+<div class="min-h-screen flex flex-col items-center justify-center  p-4 sm:p-6 md:p-8">
+    <!-- Logo Section -->
+    <div class="mb-8 md:mb-12">
+        <img src="assets/synapsil-logo.png" alt="Synapsil Logo" class="h-16 md:h-20" />
+    </div>
+
+    <!-- Main Login Card -->
+    <div
+        class="bg-white rounded-3xl shadow-xl overflow-hidden w-full py-8 px-4 max-w-sm md:max-w-7xl lg:max-w-[95%] flex flex-col md:flex-row">
+
+        <!-- Left Section: Welcome and Info -->
+        <div
+            class="w-full md:w-[55%] p-4 md:py-12 flex flex-col justify-between items-center text-center md:text-left relative">
+            <!-- Login Page Badge -->
+            <div class="absolute top-0 left-0 bg-[#0B5ED7] text-white py-2 px-6 rounded-br-2xl text-lg font-semibold">
+                Login Page
+            </div>
+
+            <div class="mt-12 md:mt-0 flex flex-col items-center md:items-start w-full">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#16205B] mb-8">WELCOME BACK!</h2>
+
+                <!-- NEW FLEX CONTAINER FOR IMAGE AND TEXT -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6 w-full">
+                    <!-- Image -->
+                    <img src="assets/login-pic.jpg" alt="Welcome Illustration"
+                        class="w-[17rem] h-auto flex-shrink-0 mb-4 md:mb-0" />
+
+                    <!-- Text Content Beside Image -->
+                    <div class="flex flex-col items-end md:items-start text-center md:text-left mt-16">
+                        <p class="text-gray-600 text-lg mb-2 md:mb-4">
+                            If you have a problem logging in, please send an<br>
+                            email to <a href="mailto:admin@nirveshenterprises.com"
+                                class="text-[#0B5ED7] font-semibold hover:underline">admin&#64;nirveshenterprises.com</a>
+                        </p>
+                        <p class="text-gray-600 text-sm">or <button
+                                class="text-white font-semibold hover:underline bg-[#0B5ED7] border-none p-3 cursor-pointer">Watch
+                                introduction movie</button></p>
+                    </div>
+                </div>
+                <!-- END NEW FLEX CONTAINER -->
+
+            </div>
+        </div>
+
+        <!-- Right Section: Login Form -->
+        <div class="w-full md:w-[45%] bg-[#0B5ED7] p-8 md:p-12 text-white flex flex-col mx-auto">
+            <!-- Login Tabs -->
+            <div class="flex justify-around bg-[#092B5A] rounded-full p-1 mb-8">
+                <button (click)="selectLoginTab('patient')"
+                    [ngClass]="{'bg-white text-[#0B5ED7] shadow': activeLoginTab === 'patient', 'text-white/80 hover:text-white': activeLoginTab !== 'patient'}"
+                    class="flex-1 py-2 px-4 rounded-full font-semibold transition-all duration-200 text-sm md:text-base">
+                    Patient Login
+                </button>
+                <button (click)="selectLoginTab('doctor')"
+                    [ngClass]="{'bg-white text-[#0B5ED7] shadow': activeLoginTab === 'doctor', 'text-white/80 hover:text-white': activeLoginTab !== 'doctor'}"
+                    class="flex-1 py-2 px-4 rounded-full font-semibold transition-all duration-200 text-sm md:text-base">
+                    Doctor's Login
+                </button>
+                <button (click)="selectLoginTab('hospital')"
+                    [ngClass]="{'bg-white text-[#0B5ED7] shadow': activeLoginTab === 'hospital', 'text-white/80 hover:text-white': activeLoginTab !== 'hospital'}"
+                    class="flex-1 py-2 px-4 rounded-full font-semibold transition-all duration-200 text-sm md:text-base">
+                    Hospital Login
+                </button>
+            </div>
+
+            <!-- Conditional Form Inputs -->
+            <!-- We use a div here for consistent flex layout, and remove form tag for patient as no submit is needed -->
+            <div class="flex flex-col flex-grow justify-center">
+
+                <!-- Patient Login Form (QR Code and Message - NO INPUTS/BUTTONS HERE) -->
+                <ng-container *ngIf="activeLoginTab === 'patient'">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 flex-grow">
+                        <!-- QR Code Image -->
+                        <img src="assets/qr-code.png" alt="QR Code"
+                            class="w-32 h-32 md:w-40 md:h-40 bg-white p-2 rounded-lg flex-shrink-0" />
+                        <!-- Text Content -->
+                        <p class="text-white text-base md:text-lg leading-relaxed text-center sm:text-left">
+                            To access patient Services download<br>
+                            the app on google play. If you already<br>
+                            have the app, simply Login.
+                        </p>
+                    </div>
+                </ng-container>
+
+                <!-- Doctor's Login Form -->
+                <ng-container *ngIf="activeLoginTab === 'doctor'">
+                    <form (ngSubmit)="onLogin()" class="flex flex-col flex-grow justify-center">
+                        <label for="doctor-username" class="text-white text-sm md:text-base mb-2">User Name
+                            (Doctor's)</label>
+                        <input type="text" id="doctor-username" placeholder="User Name"
+                            class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 mb-6 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
+
+                        <!-- Password Field (common but now inside each form) -->
+                        <label for="password-doctor" class="text-white text-sm md:text-base mb-2">Password</label>
+                        <div class="relative mb-8">
+                            <input [type]="passwordVisible ? 'text' : 'password'" id="password-doctor"
+                                placeholder="Password"
+                                class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 pr-12 w-full text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                            <button type="button" (click)="togglePasswordVisibility()"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white focus:outline-none">
+                                <i class="bi bi-eye" *ngIf="!passwordVisible"></i>
+                                <i class="bi bi-eye-slash" *ngIf="passwordVisible"></i>
+
+                            </button>
+                        </div>
+
+                        <button type="submit"
+                            class="bg-white text-[#0B5ED7] font-bold py-3 rounded-full hover:bg-gray-100 transition duration-200">
+                            Login
+                        </button>
+                    </form>
+                </ng-container>
+
+                <!-- Hospital Login Form -->
+                <ng-container *ngIf="activeLoginTab === 'hospital'">
+                    <form (ngSubmit)="onLogin()" class="flex flex-col flex-grow justify-center">
+                        <label for="hospital-username" class="text-white text-sm md:text-base mb-2">Hospital ID</label>
+                        <input type="text" id="hospital-username" placeholder="Hospital ID"
+                            class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 mb-6 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
+
+                        <!-- Password Field (common but now inside each form) -->
+                        <label for="password-hospital" class="text-white text-sm md:text-base mb-2">Password</label>
+                        <div class="relative mb-8">
+                            <input [type]="passwordVisible ? 'text' : 'password'" id="password-hospital"
+                                placeholder="Password"
+                                class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 pr-12 w-full text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                            <button type="button" (click)="togglePasswordVisibility()"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white focus:outline-none">
+                                <i class="bi bi-eye" *ngIf="!passwordVisible"></i>
+                                <i class="bi bi-eye-slash" *ngIf="passwordVisible"></i>
+                            </button>
+                        </div>
+
+                        <button type="submit"
+                            class="bg-white text-[#0B5ED7] font-bold py-3 rounded-full hover:bg-gray-100 transition duration-200">
+                            Login
+                        </button>
+                    </form>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>
