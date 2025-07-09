@@ -1,25 +1,29 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  imports: [CommonModule, FormsModule],
+  standalone: true,
 })
 export class LoginComponent {
-  activeLoginTab: 'patient' | 'doctor' | 'hospital' = 'doctor'; // Default to Doctor's Login
-  passwordVisible: boolean = false;
+  activeLoginTab: 'patient' | 'doctor' | 'hospital' = 'doctor';
+  loginTypes = ['patient', 'doctor', 'hospital'];
+  showPassword = false;
 
-  selectLoginTab(tab: 'patient' | 'doctor' | 'hospital') {
-    this.activeLoginTab = tab;
+  onLoginTypeChange(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.activeLoginTab = selectedValue as 'patient' | 'doctor' | 'hospital';
   }
 
   togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
+    this.showPassword = !this.showPassword;
   }
 
-  // You would add your actual login logic here
   onLogin() {
-    console.log('Attempting login for:', this.activeLoginTab);
-    // Implement your authentication service call
+    console.log('Attempting to log in as:', this.activeLoginTab);
   }
 }

@@ -37,7 +37,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     OurTeamComponent,
     CareersComponent,
     ContactUsComponent,
-    LoginComponent,
+
     IntroductionComponent,
     FunctionalMagneticComponent,
     PrevalenceComponent,

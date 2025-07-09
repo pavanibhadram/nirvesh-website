@@ -4,14 +4,10 @@
         <img src="assets/synapsil-logo.png" alt="Synapsil Logo" class="h-16 md:h-20" />
     </div>
 
-    <!-- Main Login Card -->
     <div
         class="bg-white rounded-3xl shadow-xl overflow-hidden w-full py-8 px-4 max-w-sm md:max-w-7xl lg:max-w-[95%] flex flex-col md:flex-row">
-
-        <!-- Left Section: Welcome and Info -->
         <div
             class="w-full md:w-[55%] p-4 md:py-12 flex flex-col justify-between items-center text-center md:text-left relative">
-            <!-- Login Page Badge -->
             <div class="absolute top-0 left-0 bg-[#0B5ED7] text-white py-2 px-6 rounded-br-2xl text-lg font-semibold">
                 Login Page
             </div>
@@ -37,107 +33,91 @@
                                 introduction movie</button></p>
                     </div>
                 </div>
-                <!-- END NEW FLEX CONTAINER -->
+
 
             </div>
         </div>
 
         <!-- Right Section: Login Form -->
-        <div class="w-full md:w-[45%] bg-[#0B5ED7] p-8 md:p-12 text-white flex flex-col mx-auto">
-            <!-- Login Tabs -->
-            <div class="flex justify-around bg-[#092B5A] rounded-full p-1 mb-8">
-                <button (click)="selectLoginTab('patient')"
-                    [ngClass]="{'bg-white text-[#0B5ED7] shadow': activeLoginTab === 'patient', 'text-white/80 hover:text-white': activeLoginTab !== 'patient'}"
-                    class="flex-1 py-2 px-4 rounded-full font-semibold transition-all duration-200 text-sm md:text-base">
-                    Patient Login
-                </button>
-                <button (click)="selectLoginTab('doctor')"
-                    [ngClass]="{'bg-white text-[#0B5ED7] shadow': activeLoginTab === 'doctor', 'text-white/80 hover:text-white': activeLoginTab !== 'doctor'}"
-                    class="flex-1 py-2 px-4 rounded-full font-semibold transition-all duration-200 text-sm md:text-base">
-                    Doctor's Login
-                </button>
-                <button (click)="selectLoginTab('hospital')"
-                    [ngClass]="{'bg-white text-[#0B5ED7] shadow': activeLoginTab === 'hospital', 'text-white/80 hover:text-white': activeLoginTab !== 'hospital'}"
-                    class="flex-1 py-2 px-4 rounded-full font-semibold transition-all duration-200 text-sm md:text-base">
-                    Hospital Login
-                </button>
+        <div class="w-full md:w-3/5 p-8 md:p-12 bg-white flex flex-col relative z-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#16205B] mb-2 text-center">Login</h2>
+            <p class="text-[#16205B] opacity-70 text-center mb-6">Access your account securely.</p>
+
+            <!-- Dropdown for Login Types -->
+            <div class="mb-6 flex justify-center">
+                <select (change)="onLoginTypeChange($event)" [value]="activeLoginTab"
+                    class="block w-full max-w-sm p-3 border border-gray-300 rounded-lg bg-gray-50 text-base text-gray-900 focus:ring-[#003366] focus:border-[#003366] appearance-none"
+                    style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 20 20\' fill=\'currentColor\'%3e%3cpath fill-rule=\'evenodd\' d=\'M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\' clip-rule=\'evenodd\'%3e%3c/path%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1.5em 1.5em;">
+                    <option *ngFor="let type of loginTypes" [value]="type">{{ type | titlecase }}</option>
+                </select>
             </div>
 
             <!-- Conditional Form Inputs -->
-            <!-- We use a div here for consistent flex layout, and remove form tag for patient as no submit is needed -->
-            <div class="flex flex-col flex-grow justify-center">
+            <form (ngSubmit)="onLogin()" class="flex flex-col flex-grow justify-center">
 
-                <!-- Patient Login Form (QR Code and Message - NO INPUTS/BUTTONS HERE) -->
+                <!-- Patient Login Form (No input fields here as requested) -->
                 <ng-container *ngIf="activeLoginTab === 'patient'">
-                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 flex-grow">
-                        <!-- QR Code Image -->
-                        <img src="assets/qr-code.png" alt="QR Code"
-                            class="w-32 h-32 md:w-40 md:h-40 bg-white p-2 rounded-lg flex-shrink-0" />
-                        <!-- Text Content -->
-                        <p class="text-white text-base md:text-lg leading-relaxed text-center sm:text-left">
-                            To access patient Services download<br>
-                            the app on google play. If you already<br>
-                            have the app, simply Login.
+                    <div class="flex flex-col items-center justify-center py-6">
+                        <img src="assets/qr-code.png" alt="QR Code" class="w-40 h-40 mb-4" />
+                        <p class="text-[#16205B] text-center text-sm max-w-xs leading-relaxed">
+                            Scan the QR code to access your patient portal directly.
+                            No login required.
                         </p>
                     </div>
                 </ng-container>
 
-                <!-- Doctor's Login Form -->
+                <!-- Doctor Login Form -->
                 <ng-container *ngIf="activeLoginTab === 'doctor'">
-                    <form (ngSubmit)="onLogin()" class="flex flex-col flex-grow justify-center">
-                        <label for="doctor-username" class="text-white text-sm md:text-base mb-2">User Name
-                            (Doctor's)</label>
-                        <input type="text" id="doctor-username" placeholder="User Name"
-                            class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 mb-6 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-
-                        <!-- Password Field (common but now inside each form) -->
-                        <label for="password-doctor" class="text-white text-sm md:text-base mb-2">Password</label>
-                        <div class="relative mb-8">
-                            <input [type]="passwordVisible ? 'text' : 'password'" id="password-doctor"
-                                placeholder="Password"
-                                class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 pr-12 w-full text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-                            <button type="button" (click)="togglePasswordVisibility()"
-                                class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white focus:outline-none">
-                                <i class="bi bi-eye" *ngIf="!passwordVisible"></i>
-                                <i class="bi bi-eye-slash" *ngIf="passwordVisible"></i>
-
-                            </button>
-                        </div>
-
-                        <button type="submit"
-                            class="bg-white text-[#0B5ED7] font-bold py-3 rounded-full hover:bg-gray-100 transition duration-200">
-                            Login
-                        </button>
-                    </form>
+                    <div class="mb-4">
+                        <label for="doctorEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="doctorEmail" name="doctorEmail" placeholder="Enter your email"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#003366] focus:border-[#003366]"
+                            required>
+                    </div>
                 </ng-container>
 
                 <!-- Hospital Login Form -->
                 <ng-container *ngIf="activeLoginTab === 'hospital'">
-                    <form (ngSubmit)="onLogin()" class="flex flex-col flex-grow justify-center">
-                        <label for="hospital-username" class="text-white text-sm md:text-base mb-2">Hospital ID</label>
-                        <input type="text" id="hospital-username" placeholder="Hospital ID"
-                            class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 mb-6 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-
-                        <!-- Password Field (common but now inside each form) -->
-                        <label for="password-hospital" class="text-white text-sm md:text-base mb-2">Password</label>
-                        <div class="relative mb-8">
-                            <input [type]="passwordVisible ? 'text' : 'password'" id="password-hospital"
-                                placeholder="Password"
-                                class="bg-white/10 border border-white/30 rounded-lg py-3 px-4 pr-12 w-full text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" />
-                            <button type="button" (click)="togglePasswordVisibility()"
-                                class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white focus:outline-none">
-                                <i class="bi bi-eye" *ngIf="!passwordVisible"></i>
-                                <i class="bi bi-eye-slash" *ngIf="passwordVisible"></i>
-                            </button>
-                        </div>
-
-                        <button type="submit"
-                            class="bg-white text-[#0B5ED7] font-bold py-3 rounded-full hover:bg-gray-100 transition duration-200">
-                            Login
-                        </button>
-                    </form>
+                    <div class="mb-4">
+                        <label for="hospitalId" class="block text-sm font-medium text-gray-700 mb-1">Hospital ID</label>
+                        <input type="text" id="hospitalId" name="hospitalId" placeholder="Enter Hospital ID"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#003366] focus:border-[#003366]"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="hospitalEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="hospitalEmail" name="hospitalEmail" placeholder="Enter your email"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#003366] focus:border-[#003366]"
+                            required>
+                    </div>
                 </ng-container>
 
+                <!-- Password Field (Visible for Doctor and Hospital only) -->
+                <div class="mb-6 relative" *ngIf="activeLoginTab === 'doctor' || activeLoginTab === 'hospital'">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                        placeholder="Enter your password"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#003366] focus:border-[#003366]"
+                        required>
+                    <span class="absolute right-3 top-9 cursor-pointer text-gray-500"
+                        (click)="togglePasswordVisibility()">
+                        <i *ngIf="!showPassword" class="bi bi-eye w-5 h-5"></i>
+                        <i *ngIf="showPassword" class="bi bi-eye-slash w-5 h-5"></i>
+                    </span>
+                </div>
+
+
+                <button type="submit"
+                    class="w-full bg-[#003366] text-white py-3 rounded-md font-semibold hover:bg-[#002244] transition"
+                    *ngIf="activeLoginTab === 'doctor' || activeLoginTab === 'hospital'">
+                    Login
+                </button>
+            </form>
+
+            <div class="mt-6 text-center text-sm">
+                <a href="#" class="text-[#003366] hover:underline">Forgot Password?</a>
+                <span class="mx-2 text-gray-400">|</span>
+                <a href="#" class="text-[#003366] hover:underline">Sign Up</a>
             </div>
         </div>
     </div>
