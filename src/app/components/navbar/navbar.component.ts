@@ -33,6 +33,7 @@ export class NavbarComponent {
   openDropdownIndex: number | null = null;
   isMobileMenuOpen: boolean = false;
   openMobileDropdownIndex: number | null = null;
+
   constructor() {}
 
   toggleMobileMenu(): void {
@@ -48,11 +49,18 @@ export class NavbarComponent {
       this.openMobileDropdownIndex === index ? null : index;
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event): void {
-    if (window.innerWidth >= 768 && this.isMobileMenuOpen) {
-      this.isMobileMenuOpen = false;
-      this.openMobileDropdownIndex = null;
+  toggleDesktopDropdown(index: number): void {
+    this.openDropdownIndex = this.openDropdownIndex === index ? null : index;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (
+      !target.closest('.relative') &&
+      !target.closest('.mobile-menu-button')
+    ) {
+      this.openDropdownIndex = null;
     }
   }
 }
