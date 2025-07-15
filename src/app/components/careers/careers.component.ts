@@ -12,9 +12,43 @@ export class CareersComponent {
       experience: '2-3 Years',
       location: 'Hyderabad',
       description:
-        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work...',
+        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work....',
     },
-    // Add more jobs as needed
+    {
+      title: 'Frontend Developer',
+      experience: '2-3 Years',
+      location: 'Hyderabad',
+      description:
+        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work....',
+    },
+    {
+      title: 'Frontend Developer',
+      experience: '2-3 Years',
+      location: 'Hyderabad',
+      description:
+        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work....',
+    },
+    {
+      title: 'Frontend Developer',
+      experience: '2-3 Years',
+      location: 'Hyderabad',
+      description:
+        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work....',
+    },
+    {
+      title: 'Frontend Developer',
+      experience: '2-3 Years',
+      location: 'Hyderabad',
+      description:
+        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work....',
+    },
+    {
+      title: 'Frontend Developer',
+      experience: '2-3 Years',
+      location: 'Hyderabad',
+      description:
+        'Front-end developers are responsible for the user interface, graphics, and look of websites and web applications. They work....',
+    },
   ];
 
   showApplicationModal = false;

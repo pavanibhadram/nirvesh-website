@@ -17,7 +17,7 @@ interface IServiceCard {
 interface IUniqueFeature {
   id: number;
   text: string;
-  content: string; // Content for the dropdown
+  content: string;
   isOpen: boolean;
 }
 
@@ -33,23 +33,23 @@ export class HomeComponent implements OnInit {
     {
       title: 'Precise Data Tracking',
       description:
-        'Lorem ipsum dolor sit amet consectetur. Ac imperdiet pulvinar euismod cursus pulvinar sed.',
+        'Precise data tracking capturing every relevant metric in real time to provide accurate insights and support informed decision-making for better neurohealth outcomes.',
       image: 'assets/slide-1.gif',
-      link: '/learn-more',
+      link: '/the-science',
     },
     {
       title: 'Innovative solution',
       description:
         'Comprehensive data analysis and visualization tools for informed decision making.',
       image: 'assets/slide-2.gif',
-      link: '/analytics',
+      link: '/portfolio',
     },
     {
       title: 'Cost Effective Treatment',
       description:
         'Stay updated with live tracking and instant notifications for critical metrics.',
       image: 'assets/slide-3.png',
-      link: '/monitoring',
+      link: '/why-us/product',
     },
   ];
 
@@ -172,7 +172,7 @@ export class HomeComponent implements OnInit {
   toggleFeature(id: number) {
     this.uniqueFeatures = this.uniqueFeatures.map((feature) => ({
       ...feature,
-      isOpen: feature.id === id ? !feature.isOpen : false, // Toggle clicked, close others
+      isOpen: feature.id === id ? !feature.isOpen : false,
     }));
   }
 }
