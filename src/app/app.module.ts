@@ -27,6 +27,7 @@ import { StrokeRehabilitationComponent } from './components/stroke-rehabilitatio
 import { EpidemiologyComponent } from './components/epidemiology/epidemiology.component';
 import { MusicTherapyComponent } from './components/music-therapy/music-therapy.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     MusicTherapyComponent,
     PrivacyPolicyComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ChatbotComponent],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
